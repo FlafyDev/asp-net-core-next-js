@@ -45,18 +45,22 @@ const UserCard = (props) => {
           <Field displayName={"Boxing Points"} state={[user, setUser]} type={"number"} />
           <Field displayName={"Admin"} state={[user, setUser]} type={"checkbox"} />
         </div>
-        <div className={styles.deleteButton} onClick={() => openPopup(
-          <div className={styles.popupContainer}>
-            <div className={styles.popupTitle}>
-              {`Are you sure you want to remove "${user.Username}"?`}
+        {
+          props.canDelete ? (
+            <div className={styles.deleteButton} onClick={() => openPopup(
+              <div className={styles.popupContainer}>
+                <div className={styles.popupTitle}>
+                  {`Are you sure you want to remove "${user.Username}"?`}
+                </div>
+                <button className={styles.sureDeleteButton} onClick={deleteUser}>
+                  {"Delete"}
+                </button>
+              </div>
+            )}>
+              <FontAwesomeIcon icon={faTrashCan} />
             </div>
-            <button className={styles.sureDeleteButton} onClick={deleteUser}>
-              {"Delete"}
-            </button>
-          </div>
-        )}>
-          <FontAwesomeIcon icon={faTrashCan} />
-        </div>
+          ) : <></>
+				}
       </div>
 
     </div>

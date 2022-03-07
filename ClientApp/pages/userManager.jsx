@@ -67,7 +67,7 @@ const UserManager = (props) => {
 				<div className={styles.cardsContainer}>
 					{
 						users.map((user, i) => {
-							return <UserCard user={user} key={i} visible={filteredUsersIndex.includes(i)} />;
+							return <UserCard canDelete={user.Username !== logged.info.username} user={user} key={i} visible={filteredUsersIndex.includes(i)} />;
 						})
 					}
 				</div>
